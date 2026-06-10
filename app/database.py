@@ -6,7 +6,7 @@ from sqlalchemy.orm import declarative_base
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql+psycopg://admin:1234@127.0.0.1:5433/novel_db",
+    "postgresql+psycopg://admin:1234@127.0.0.1:5432/auth_db",
 )
 
 engine = create_engine(DATABASE_URL)
