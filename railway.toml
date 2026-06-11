@@ -1,0 +1,15 @@
+# Railway Configuration File
+# Documentation: https://docs.railway.app/reference/railway-toml
+
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:${PORT:-8000}"
+healthcheckPath = "/api/auth/login" # Путь для проверки работоспособности (на основе ваших роутов)
+healthcheckTimeout = 100
+restartPolicyType = "ON_FAILURE"
+maxRestartCount = 3
+
+[envs]
+PYTHON_VERSION = "3.11"
